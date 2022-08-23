@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnisFree</title>
+    <link rel="stylesheet" href="../../../assets/bootstrap5/css/bootstrap.css" />
+    <style>
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../../assets/fonts/Roboto/Roboto-Regular.ttf');
+      }
+    </style>
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+  </head>
+  <body>
+    <header class="container-fluid px-0 position-relative">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="../../../index.html">InnisFree</a>
+
+          <div class="collapse navbar-collapse order-last order-md-0" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="../../../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../../../pages/body-and-hair.html" aria-current="page"> Body and hair </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../../pages/makeup.html">Makeup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../../pages/skin-care.html">Skin care</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <button id="logInBtn" class="btn btn-primary px-4 me-3" type="button">Login</button>
+
+            <a id="cartBtn" href="../../../pages/cart.html" class="btn btn-dark d-none">
+              <i class="bi bi-cart3"></i>
+            </a>
+
+            <div class="person">
+              <button id="person_avatar" class="btn mx-3 me-md-0 person_avatar d-none" type="button">
+                <span id="person_nameFirstLetter"></span>
+              </button>
+
+              <div id="person_options" class="person_options d-none text-center">
+                <a href="../../../pages/orders.html" class="text-decoration-none text-dark">Orders</a>
+                <br />
+                <button id="person_logOutBtn" type="button">Log out</button>
+              </div>
+            </div>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="overlay d-none vh-100"></div>
+      <div id="formsWrapper" class="formsWrapper container d-none vh-100">
+        <form class="logInForm d-none" id="logInForm" action="">
+          <button type="button" id="logInForm_closeBtn" class="btn" style="margin-left: auto; display: block">
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="mb-3 mt-3">
+            <label for="logInForm_email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="logInForm_email" placeholder="Enter email" />
+          </div>
+
+          <div class="mb-3">
+            <label for="logInForm_pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="logInForm_pwd" placeholder="Enter password" />
+          </div>
+
+          <button id="logInForm_logInBtn" type="submit" class="btn btn-primary px-4 py-2 w-100">Login</button>
+
+          <button id="logInForm_createAnAccountBtn" type="button" class="btn btn-secondary px-4 py-2 w-100 mt-2">
+            Create an account
+          </button>
+        </form>
+
+        <form class="createAnAccountForm d-none" id="createAnAccountForm" action="">
+          <button type="button" id="createAnAccountForm_closeBtn" class="btn" style="margin-left: auto; display: block">
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="mb-3 mt-3">
+            <label for="createAnAccountForm_name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="createAnAccountForm_name" placeholder="Enter name" />
+          </div>
+
+          <div class="mb-3 mt-3">
+            <label for="createAnAccountForm_email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="createAnAccountForm_email" placeholder="Enter email" />
+          </div>
+
+          <div class="mb-3">
+            <label for="createAnAccountForm_pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="createAnAccountForm_pwd" placeholder="Enter password" />
+          </div>
+
+          <button id="createAnAccountForm_createAnAccountBtn" type="submit" class="btn btn-primary px-4 py-2 w-100 mb-2">
+            Create an account
+          </button>
+
+          <button id="createAnAccountForm_logInBtn" type="button" class="btn btn-secondary px-4 py-2 w-100">Login</button>
+        </form>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="productDetailsWrapper row row-cols-1 row-cols-md-2 align-items-center py-5">
+        <div class="col">
+          <img id="productDetailsWrapper_img" class="productDetailsWrapper_img img-fluid border" src="" alt="" />
+        </div>
+
+        <div class="col py-4 py-md-0">
+          <div class="productDetailsWrapper_body">
+            <h2 id="productDetailsWrapper_title" class="fs-4"></h2>
+            <span id="productDetailsWrapper_price" class="fw-bold fs-5 mb-3 d-block"></span>
+            <p id="productDetailsWrapper_description" class="productDetailsWrapper_description"></p>
+
+            <div>
+              <div class="d-flex gap-2">
+                <button
+                  type="button"
+                  aria-label="decrease product count"
+                  id="productDetailsWrapper_decreaseCountBtn"
+                  class="btn btn-secondary px-4"
+                >
+                  <i class="bi bi-dash-lg"></i>
+                </button>
+
+                <input id="productDetailsWrapper_countValue" type="number" class="form-control text-end fw-bold" value="1" />
+
+                <button
+                  type="button"
+                  aria-label="increase product count"
+                  id="productDetailsWrapper_increaseCountBtn"
+                  class="btn btn-primary px-4"
+                >
+                  <i class="bi bi-plus-lg"></i>
+                </button>
+              </div>
+
+              <div class="mt-3">
+                <button
+                  id="productDetailsWrapper_addToCartBtn"
+                  type="button"
+                  class="btn btn-success d-flex align-items-center w-100 justify-content-center py-2"
+                  data-added="false"
+                >
+                  Add To Cart
+                  <i class="bi bi-cart-plus ms-3"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../../assets/js/funcsUtils.js"></script>
+    <script>
+      on('load', window, () => {
+        if (!localStorage.getItem('itemsAdded')) {
+          localStorage.setItem('itemsAdded', JSON.stringify({}));
+        }
+
+        const bootstrap5JS = importScript('assets/bootstrap5/js/bootstrap.js');
+        const usersDB = importScript('assets/database/users.js');
+        const bodyAndHairDB = importScript('assets/database/bodyAndHair.js');
+        const cardComponentJS = importScript('assets/js/components/card.js');
+        const accountJS = importScript('assets/js/account.js');
+        const bodyAndHair_bodyCare_3JS = importScript('assets/js/productDetails/bodyAndHair/bodyCare/3.js');
+        document.body.append(bootstrap5JS, usersDB, bodyAndHairDB, cardComponentJS, accountJS, bodyAndHair_bodyCare_3JS);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnisFree</title>
+    <link rel="stylesheet" href="../assets/bootstrap5/css/bootstrap.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body class="position-relative">
+    <div class="container py-5 cart">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="text-center">Cart</h2>
+        <button id="cart_orderNowBtn" class="btn btn-primary" type="button">Order Now</button>
+      </div>
+      <div class="cartItemsWrapper row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4 mt-3"></div>
+      <div class="cart_overlay d-none"></div>
+      <div id="orderFormWrapper" class="orderFormWrapper d-none">
+        <form class="orderForm" id="orderForm" action="">
+          <button type="button" id="orderForm_closeBtn" class="btn" style="margin-left: auto; display: block">
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="mb-3 mt-3">
+            <label for="orderForm_name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="orderForm_name" placeholder="Enter name" />
+          </div>
+
+          <div class="mb-3">
+            <label for="orderForm_phNum" class="form-label">Phone Number:</label>
+            <input type="tel" class="form-control" id="orderForm_phNum" placeholder="Enter phone number" />
+          </div>
+
+          <div class="mb-3">
+            <label for="orderForm_address" class="form-label">Address:</label>
+            <input type="text" class="form-control" id="orderForm_address" placeholder="Enter address" />
+          </div>
+
+          <button id="orderForm_orderNowBtn" type="button" class="btn btn-secondary px-4 py-2 w-100 mt-2">Order Now</button>
+        </form>
+        <div class="orderFormWrapper_completeMessage text-center py-5 d-none"><span class="fs-5">Order Completed</span></div>
+      </div>
+    </div>
+
+    <script src="../assets/js/funcsUtils.js"></script>
+    <script>
+      on('load', window, () => {
+        const bodyAndHairDB = importScript('assets/database/bodyAndHair.js');
+        const accountJS = importScript('assets/js/account.js');
+        const cartJS = importScript('assets/js/cart.js');
+        document.body.append(bodyAndHairDB, accountJS, cartJS);
+      });
+    </script>
+  </body>
+</html>
